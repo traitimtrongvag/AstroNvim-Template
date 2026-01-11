@@ -1,0 +1,20 @@
+# neovim caches
+.cache/
+.config/
+.local/
+.state/
+.shada/
+.luarc.json
+.neoconf.json
+
+# lazy.nvim
+lazy-lock.json
+lazy/
+.repro.lua
+
+# logs
+**/*.log
+
+# os
+.DS_Store
+Thumbs.db
