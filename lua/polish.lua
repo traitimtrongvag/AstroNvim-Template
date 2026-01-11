@@ -1,5 +1,19 @@
-if true then return end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+local Terminal = require("toggleterm.terminal").Terminal
 
--- This will run last in the setup process.
--- This is just pure lua so anything that doesn't
--- fit in the normal config locations above can go here
+local rust
+
+vim.keymap.set("n", "<leader>tr", function()
+  vim.cmd("w")
+  local file = vim.fn.expand("%:p")
+  local out = vim.fn.expand("~/.cache/nvim_rust")
+
+  if not rust then
+    rust = Terminal:new({
+      direction = "float",
+      close_on_exit = false,
+    })
+  end
+
+  rust.cmd = "rustc " .. file .. " -o " .. out .. " && " .. out .. "; read"
+  rust:toggle()
+end, { desc = "Run Rust file" })
