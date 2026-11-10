@@ -83,7 +83,3 @@ nvim/
 
 This repo is an override configuration for AstroNvim.
 AstroNvim core is managed separately.
-
-### Demo
-
-![Demo](https://github.com/traitimtrongvag/AstroNvim-Template/raw/Demo/Image.jpg)
