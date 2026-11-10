@@ -3,7 +3,7 @@ local Terminal = require("toggleterm.terminal").Terminal
 vim.keymap.set("n", "<leader>tr", function()
   vim.cmd("w")
   local file = vim.fn.expand("%:p")
-  local out = vim.fn.expand("~/.cache/nvim_rust")
+  local out = vim.fn.tempname()
   local escaped_file = vim.fn.shellescape(file)
   local escaped_out = vim.fn.shellescape(out)
 
@@ -12,6 +12,7 @@ vim.keymap.set("n", "<leader>tr", function()
     direction = "float",
     close_on_exit = false,
     hidden = false,
+    on_exit = function() vim.fn.delete(out) end,
   })
 
   rust_term:toggle()
